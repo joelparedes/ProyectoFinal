@@ -11,117 +11,112 @@ using ProyectoFinal.Models;
 
 namespace ProyectoFinal.Controllers
 {
-    public class EmpleadosController : Controller
+    public class LicenciasController : Controller
     {
         private GestionContext db = new GestionContext();
 
-        // GET: Empleados
+        // GET: Licencias
         public ActionResult Index()
         {
-            var empleados = db.Empleados.Include(e => e.Cargo).Include(e => e.Departamento);
-            return View(empleados.ToList());
+            var licencias = db.Licencias.Include(l => l.Empleado);
+            return View(licencias.ToList());
         }
 
-        // GET: Empleados/Details/5
+        // GET: Licencias/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleados.Find(id);
-            
-            if (empleado == null)
+            Licencia licencia = db.Licencias.Find(id);
+            if (licencia == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(licencia);
         }
 
-        // GET: Empleados/Create
+        // GET: Licencias/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Cargo = new SelectList(db.Cargos, "Id_Cargo", "Nombre_Cargo");
-            ViewBag.Id_Depto = new SelectList(db.Departamentos, "Id_Depto", "Nombre_Depto");
+            ViewBag.Id_Empleado = new SelectList(db.Empleados, "Id_Empleado", "Nombre_Empleado");
             return View();
         }
 
-        // POST: Empleados/Create
+        // POST: Licencias/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Empleado,CodigoEmpleado,Nombre_Empleado,Apellido,Telefono,Id_Depto,Id_Cargo,FechaIngreso,Salario,status")] Empleado empleado)
+        public ActionResult Create([Bind(Include = "Id_licencia,Id_Empleado,Inicio_Permiso,Fin_Permiso,Motivo,Comentario")] Licencia licencia)
         {
             if (ModelState.IsValid)
             {
-                db.Empleados.Add(empleado);
+                db.Licencias.Add(licencia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Cargo = new SelectList(db.Cargos, "Id_Cargo", "Nombre_Cargo", empleado.Id_Cargo);
-            ViewBag.Id_Depto = new SelectList(db.Departamentos, "Id_Depto", "Nombre_Depto", empleado.Id_Depto);
-            return View(empleado);
+            ViewBag.Id_Empleado = new SelectList(db.Empleados, "Id_Empleado", "CodigoEmpleado", licencia.Id_Empleado);
+            return View(licencia);
         }
 
-        // GET: Empleados/Edit/5
+        // GET: Licencias/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleados.Find(id);
-            if (empleado == null)
+            Licencia licencia = db.Licencias.Find(id);
+            if (licencia == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id_Cargo = new SelectList(db.Cargos, "Id_Cargo", "Nombre_Cargo", empleado.Id_Cargo);
-            ViewBag.Id_Depto = new SelectList(db.Departamentos, "Id_Depto", "Codigo_Depto", empleado.Id_Depto);
-            return View(empleado);
+            ViewBag.Id_Empleado = new SelectList(db.Empleados, "Id_Empleado", "CodigoEmpleado", licencia.Id_Empleado);
+            return View(licencia);
         }
 
-        // POST: Empleados/Edit/5
+        // POST: Licencias/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Empleado,CodigoEmpleado,Nombre_Empleado,Apellido,Telefono,Id_Depto,Id_Cargo,FechaIngreso,Salario,status")] Empleado empleado)
+        public ActionResult Edit([Bind(Include = "Id_licencia,Id_Empleado,Inicio_Permiso,Fin_Permiso,Motivo,Comentario")] Licencia licencia)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(empleado).State = EntityState.Modified;
+                db.Entry(licencia).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_Cargo = new SelectList(db.Cargos, "Id_Cargo", "Nombre_Cargo", empleado.Id_Cargo);
-            ViewBag.Id_Depto = new SelectList(db.Departamentos, "Id_Depto", "Codigo_Depto", empleado.Id_Depto);
-            return View(empleado);
+            ViewBag.Id_Empleado = new SelectList(db.Empleados, "Id_Empleado", "CodigoEmpleado", licencia.Id_Empleado);
+            return View(licencia);
         }
 
-        // GET: Empleados/Delete/5
+        // GET: Licencias/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleados.Find(id);
-            if (empleado == null)
+            Licencia licencia = db.Licencias.Find(id);
+            if (licencia == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(licencia);
         }
 
-        // POST: Empleados/Delete/5
+        // POST: Licencias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Empleado empleado = db.Empleados.Find(id);
-            db.Empleados.Remove(empleado);
+            Licencia licencia = db.Licencias.Find(id);
+            db.Licencias.Remove(licencia);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
