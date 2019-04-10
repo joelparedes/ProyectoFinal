@@ -134,5 +134,18 @@ namespace ProyectoFinal.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult EmpActivos()
+        {
+            var ListEmpleadosActivos = new SelectList (db.Empleados.Where(x => x.status == true));
+            return View(ListEmpleadosActivos);
+        }
+        
+        public ActionResult EmpInactivos()
+        {
+            var ListEmpleadosActivos = new SelectList(db.Empleados.Where(x => x.status != true));
+            return View(ListEmpleadosActivos);
+        }
+
     }
 }

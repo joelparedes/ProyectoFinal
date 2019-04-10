@@ -57,14 +57,15 @@ namespace ProyectoFinal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var salida = (from x in db.Empleados
-                              where x.status == true
-                              select x).FirstOrDefault();
-                salida.status = false;
+                //var salida = (from x in db.Empleados
+                //              where x.status == true
+                //              select x).FirstOrDefault();
+                //salida.status = false;
 
-                db.Entry(salida).State = EntityState.Modified;
-
+                Empleado emp;
                 db.Salidas_Empleados.Add(salida_Empleado);
+                emp = db.Empleados.Find(salida_Empleado.Id_Empleado);
+                emp.status = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

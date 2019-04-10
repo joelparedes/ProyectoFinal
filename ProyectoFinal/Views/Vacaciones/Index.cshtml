@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProyectoFinal.Models.Permiso>
+﻿@model IEnumerable<ProyectoFinal.Models.Vacacion>
 
 @{
     ViewBag.Title = "Index";
@@ -18,10 +18,13 @@
             @Html.DisplayNameFor(model => model.Empleado.Nombre_Empleado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Inicio_Permiso)
+            @Html.DisplayNameFor(model => model.Inicio_Vacaciones)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fin_Permiso)
+            @Html.DisplayNameFor(model => model.Fin_Vacaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Año)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comentario)
@@ -32,24 +35,27 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Empleado.Id_Empleado)
+            @Html.DisplayFor(modelItem => item.Empleado.CodigoEmpleado)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Empleado.Nombre_Empleado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Inicio_Permiso)
+            @Html.DisplayFor(modelItem => item.Inicio_Vacaciones)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Fin_Permiso)
+            @Html.DisplayFor(modelItem => item.Fin_Vacaciones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Año)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Comentario)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id_Permiso }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id_Permiso }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id_Permiso })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id_Vacacion }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id_Vacacion }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id_Vacacion })
         </td>
     </tr>
 }
