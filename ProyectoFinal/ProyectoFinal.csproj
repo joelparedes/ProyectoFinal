@@ -553,11 +553,12 @@
     <Content Include="Views\Vacaciones\Edit.cshtml" />
     <Content Include="Views\Vacaciones\Index.cshtml" />
     <Content Include="Views\Nominas\Create.cshtml" />
-    <Content Include="Views\Nominas\Delete.cshtml" />
-    <Content Include="Views\Nominas\Details.cshtml" />
-    <Content Include="Views\Nominas\Edit.cshtml" />
     <Content Include="Views\Nominas\Index.cshtml" />
     <Content Include="Views\Empleados\EmpActivos.cshtml" />
+    <Content Include="Views\Nominas\HomeNomina.cshtml" />
+    <Content Include="Views\Nominas\calcuNomina.cshtml" />
+    <Content Include="Views\Nominas\Delete.cshtml" />
+    <Content Include="Views\Empleados\EmpInactivos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

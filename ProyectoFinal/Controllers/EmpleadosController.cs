@@ -137,14 +137,14 @@ namespace ProyectoFinal.Controllers
 
         public ActionResult EmpActivos()
         {
-            var ListEmpleadosActivos = new SelectList (db.Empleados.Where(x => x.status == true));
-            return View(ListEmpleadosActivos);
+            var empleados = db.Empleados.Where(x => x.status == true).Include(e => e.Cargo).Include(e => e.Departamento); ;
+            return View(empleados);
         }
         
         public ActionResult EmpInactivos()
         {
-            var ListEmpleadosActivos = new SelectList(db.Empleados.Where(x => x.status != true));
-            return View(ListEmpleadosActivos);
+            var empleados = db.Empleados.Where(x => x.status == true).Include(e => e.Cargo).Include(e => e.Departamento); ;
+            return View(empleados);
         }
 
     }

@@ -10,8 +10,8 @@ namespace ProyectoFinal.Models
     {
         [Key]
         public int Id_Nomina { get; set; }
-        public DateTime Año { get; set; }
-        public DateTime Mes { get; set; }
+        public int Año { get; set; }
+        public int Mes { get; set; }
         public decimal Monto_Total { get; set; }
 
         //public Empleado Empleado { get; set; }

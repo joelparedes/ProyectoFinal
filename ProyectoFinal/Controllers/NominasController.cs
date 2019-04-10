@@ -18,9 +18,38 @@ namespace ProyectoFinal.Controllers
         // GET: Nominas
         public ActionResult Index()
         {
-            ViewBag.NominaSum = db.Empleados.Where(x => x.status == true).Sum(x => x.Salario);
-            return View(db.GetNominas.ToList());
+
+            var nominas = db.GetNominas.ToList();
+            
+            return View(nominas);
+            //ViewBag.NominaSum = db.Empleados.Where(x => x.status == true).Sum(x => x.Salario);
+            //return View(db.GetNominas.Where(x => x.Año == ano).ToList());
         }
+
+        public ActionResult HomeNomina() {
+            ViewBag.calcuNomina = db.Empleados.Where(x => x.status == true).Sum(x => x.Salario);
+            return View();
+        }
+
+        public ActionResult calcuNomina() {
+            var aux = db.Empleados.Where(x => x.status == true).Sum(x => x.Salario);
+            Nomina nomina = new Nomina { Mes = DateTime.Now.Month,
+                                         Año = DateTime.Now.Year,
+                                         Monto_Total = aux };
+            if (db.GetNominas.FirstOrDefault(x => x.Año == nomina.Año && x.Mes == nomina.Mes) != null)
+            {
+                return View();
+
+            }
+            else {
+                db.GetNominas.Add(nomina);
+                db.SaveChanges();
+                //nomina.Monto_Total = aux;
+                return RedirectToAction("Index");
+            }
+            
+        }
+
 
         // GET: Nominas/Details/5
         public ActionResult Details(int? id)
