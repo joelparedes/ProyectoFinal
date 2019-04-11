@@ -36,12 +36,13 @@
 
                     @*Menu empleados*@
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empleados<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Funciones<span class="caret"></span></a>
                         <ul class="dropdown-menu" id="submenu">
                             <li> @Html.ActionLink("Registrar Empleado", "Create", "Empleados")</li>
                             <li> @Html.ActionLink("Registrar Salida", "create", "Salida_Empleado")</li>
                             <li> @Html.ActionLink("Registrar Permiso", "create", "Permisos")</li>
                             <li> @Html.ActionLink("Registrar Licencia", "create", "Licencias")</li>
+                            <li> @Html.ActionLink("Registrar Vacaciones", "create", "Vacaciones")</li>
                             <li> @Html.ActionLink("Agregar Departamento", "create", "Departamentos")</li>
                             <li> @Html.ActionLink("Agregar Cargo", "create", "Cargos")</li>
                         </ul>
@@ -52,6 +53,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servicios<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li> @Html.ActionLink("Generar Nomina", "HomeNomina", "Nominas")</li>
+                            <li> @Html.ActionLink("Listado Empleados", "Index", "Empleados")</li>
+
                         </ul>
                     </li>
 
@@ -64,15 +67,15 @@
                             <li> @Html.ActionLink("Empleados Inactivos", "EmpInactivos", "Empleados")</li>
                             <li> @Html.ActionLink("Listado Departamentos", "index", "Departamentos")</li>
                             <li> @Html.ActionLink("Listado Cargos", "index", "Cargos")</li>
-                            <li> @Html.ActionLink("Entrada Empleados por Mes", "Informe_Entrada_Mes", "Informe")</li>
+                            <li> @Html.ActionLink("Entrada Empleados por Mes", "Informe_EntradaMes", "Empleados")</li>
                             <li> @Html.ActionLink("Salida Empleados por Mes", "Informe_Salida_Mes", "Informe")</li>
-                            <li> @Html.ActionLink("Permisos", "index", "Permisos")</li>
+                            <li> @Html.ActionLink("Listado de Permisos", "index", "Permisos")</li>
 
                             @*<li role="separator" class="divider"></li>*@
 
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Acerca De", "About", "Gestion")</li>
+                    @*<li>@Html.ActionLink("Acerca De", "About", "Gestion")</li>*@
                 </ul>
             </div>
         </div>

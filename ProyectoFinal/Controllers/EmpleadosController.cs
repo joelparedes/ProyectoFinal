@@ -35,6 +35,7 @@ namespace ProyectoFinal.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(empleado);
         }
 
@@ -135,17 +136,58 @@ namespace ProyectoFinal.Controllers
             base.Dispose(disposing);
         }
 
+
+        // INFORMES
+
         public ActionResult EmpActivos()
         {
-            var empleados = db.Empleados.Where(x => x.status == true).Include(e => e.Cargo).Include(e => e.Departamento); ;
+            var empleados = db.Empleados.Where(x => x.status == true).Include(e => e.Cargo).Include(e => e.Departamento);
             return View(empleados);
         }
         
         public ActionResult EmpInactivos()
         {
-            var empleados = db.Empleados.Where(x => x.status == true).Include(e => e.Cargo).Include(e => e.Departamento); ;
+            var empleados = db.Empleados.Where(x => x.status == false).Include(e => e.Cargo).Include(e => e.Departamento);
             return View(empleados);
         }
+
+        public ActionResult Informe_EntradaMes() {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Informe_EntradaMesLista(int ano, int mes )
+        {
+            var empleados = db.Empleados.Where(x => x.FechaIngreso.Year == ano && x.FechaIngreso.Month == mes).Include(e => e.Cargo).Include(e => e.Departamento).ToList();
+
+            if (empleados != null)
+            {
+                return View(empleados);
+            }
+            else
+            {
+
+                return RedirectToAction("Error");
+            }
+        }
+        //[HttpPost]
+        //public ActionResult Informe_EntradaMesLista(int? ano, int? mes) //recibe a;o y mes para buscar
+        //{
+        //    ano = int.Parse(Request.Form["ano"]);
+        //    mes = int.Parse(Request.Form["mes"]);
+
+        //    var empleados = db.Empleados.Where(x => x.FechaIngreso.Year == ano && x.FechaIngreso.Month == mes).Include(e => e.Cargo).Include(e => e.Departamento);
+
+        //    if (empleados != null)
+        //    {
+        //        return View(empleados);
+        //    }else{
+                
+        //        return RedirectToAction("Error");
+        //    }
+        //}
 
     }
 }

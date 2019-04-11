@@ -20,9 +20,8 @@ namespace ProyectoFinal.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fin_Vacaciones { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime Año { get; set; } // Correspondiente a: (año)
+
+        public int Año { get; set; } // Correspondiente a: (año)
 
         public String Comentario { get; set; }
 

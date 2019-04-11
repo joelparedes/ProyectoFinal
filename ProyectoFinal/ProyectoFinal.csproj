@@ -548,9 +548,6 @@
     <Content Include="Views\Salida_Empleado\Edit.cshtml" />
     <Content Include="Views\Salida_Empleado\Index.cshtml" />
     <Content Include="Views\Vacaciones\Create.cshtml" />
-    <Content Include="Views\Vacaciones\Delete.cshtml" />
-    <Content Include="Views\Vacaciones\Details.cshtml" />
-    <Content Include="Views\Vacaciones\Edit.cshtml" />
     <Content Include="Views\Vacaciones\Index.cshtml" />
     <Content Include="Views\Nominas\Create.cshtml" />
     <Content Include="Views\Nominas\Index.cshtml" />
@@ -559,6 +556,12 @@
     <Content Include="Views\Nominas\calcuNomina.cshtml" />
     <Content Include="Views\Nominas\Delete.cshtml" />
     <Content Include="Views\Empleados\EmpInactivos.cshtml" />
+    <Content Include="Views\Empleados\Informe_EntradaMes.cshtml" />
+    <Content Include="Views\Empleados\Informe_EntradaMesLista.cshtml" />
+    <Content Include="Views\Empleados\View.cshtml" />
+    <Content Include="Views\Empleados\Error.cshtml" />
+    <Content Include="Views\Vacaciones\Delete.cshtml" />
+    <Content Include="Views\Vacaciones\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

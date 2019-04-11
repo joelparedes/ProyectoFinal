@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProyectoFinal.Models.Cargo>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado Cargo";
 }
 
-<h2>Index</h2>
+<h2>Listado de Cargos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Cargo", "Create", new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -31,3 +31,7 @@
 }
 
 </table>
+
+<div>
+    @Html.ActionLink("Volver al inicio", "Index", "Gestion")
+</div>

@@ -19,7 +19,7 @@ namespace ProyectoFinal.Controllers
         public ActionResult Index()
         {
             var vacacions = db.Vacacions.Include(v => v.Empleado);
-            return View(vacacions.ToList());
+            return View(vacacions);
         }
 
         // GET: Vacaciones/Details/5
@@ -40,6 +40,10 @@ namespace ProyectoFinal.Controllers
         // GET: Vacaciones/Create
         public ActionResult Create()
         {
+            //ViewBag.Id_Empleado = new SelectList(from x in db.Empleados
+            //                                     where x.status == true
+            //                                     select x, "Id_Empleado", "Nombre_Empleado");
+
             ViewBag.Id_Empleado = new SelectList(db.Empleados, "Id_Empleado", "Nombre_Empleado");
             return View();
         }

@@ -1,16 +1,16 @@
 ﻿@model ProyectoFinal.Models.Empleado
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Empleado";
 }
 
-<h2>Details</h2>
-
+<h2>Detalles Empleado</h2>
+<hr />
 <div>
     <h4>Empleado</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Cargo.Nombre_Cargo)
         </dt>
 
@@ -24,7 +24,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Departamento.Codigo_Depto)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.CodigoEmpleado)
@@ -85,6 +85,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Empleado }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Empleado }) |
+    @Html.ActionLink("Volver al listado", "Index")
 </p>
